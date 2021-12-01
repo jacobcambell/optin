@@ -3,8 +3,24 @@ import express from 'express'
 const app = express()
 const port = process.env.PORT || 9000;
 
-app.post('/submit-form', (req, res) => {
+import { formDataCheck } from './middleware'
+import { pg } from './knex'
 
+app.use(express.json())
+
+app.post('/submit-form', formDataCheck, async (req, res) => {
+    // Add records to database
+    await pg('submissions').insert({
+        email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        phone: req.body.phone,
+        address: req.body.address,
+        zip_code: req.body.zip_code,
+        country: req.body.country
+    })
+
+    res.json({ message: 'You got it' })
 })
 
 app.listen(port, () => {
