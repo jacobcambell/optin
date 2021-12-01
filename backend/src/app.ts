@@ -5,8 +5,14 @@ const port = process.env.PORT || 9000;
 
 import { formDataCheck } from './middleware'
 import { pg } from './knex'
+import cors from 'cors'
 
 app.use(express.json())
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(cors())
+}
+
 
 app.post('/submit-form', formDataCheck, async (req, res) => {
     // Add records to database
