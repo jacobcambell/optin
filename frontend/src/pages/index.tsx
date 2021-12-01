@@ -1,8 +1,11 @@
 import * as React from "react"
+import Form from "../components/Form/Form"
 
 const IndexPage = () => {
   return (
-    <div className="bg-red-500 text-red-500">hello world!</div>
+    <div>
+      <Form />
+    </div>
   )
 }
 
