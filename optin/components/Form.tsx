@@ -1,7 +1,19 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useMutation } from 'react-query';
 
 const fieldStyle = 'border border-gray-500 w-full p-1 mb-3';
 const labelStyle = 'font-bold';
+
+interface FormFields {
+    email: string,
+    first_name: string,
+    last_name: string,
+    phone: string,
+    address: string,
+    zip_code: string,
+    country: string
+}
 
 export default function Form() {
 
@@ -13,8 +25,27 @@ export default function Form() {
     const [zip_code, setZipCode] = useState<string>('')
     const [country, setCountry] = useState<string>('')
 
-    const handleSubmit = () => {
+    const { data, error, isLoading, mutate } = useMutation((data: FormFields) => {
+        return axios.post('/api/submit-form', data)
+    }, {
+        onError: (err) => {
+            console.log('Error!!! ' + err)
+        },
+        onSuccess: (data) => {
+            console.log(data)
+        }
+    })
 
+    const handleSubmit = () => {
+        mutate({
+            email,
+            first_name,
+            last_name,
+            phone,
+            address,
+            zip_code,
+            country
+        })
     }
 
     return (

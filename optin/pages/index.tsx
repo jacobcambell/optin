@@ -1,7 +1,10 @@
 import React from 'react'
+import Form from '../components/Form'
 
 export default function Home() {
   return (
-    <div>optin</div>
+    <div>
+      <Form />
+    </div>
   )
 }
