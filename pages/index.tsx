@@ -7,7 +7,9 @@ import styles from "../styles/index.module.scss";
 export default function Home() {
   return (
     <div>
-      <Header></Header>
+      <div className="my-3">
+        <Header></Header>
+      </div>
 
       <div className={styles.center}>
         <BannerImage></BannerImage>
