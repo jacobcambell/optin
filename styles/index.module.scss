@@ -1,0 +1,22 @@
+.center {
+  width: 90%;
+  margin: auto;
+}
+
+@media screen and (min-width: 575px) {
+  .center {
+    width: 450px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .center {
+    width: 675px;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .center {
+    width: 900px;
+  }
+}

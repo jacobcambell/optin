@@ -51,7 +51,7 @@ export default function Form() {
   };
 
   return (
-    <div className="w-1/3 m-auto my-5">
+    <div>
       <p className={labelStyle}>Email</p>
       <input
         type="text"
